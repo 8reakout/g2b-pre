@@ -1,0 +1,61 @@
+g2b_prespec:
+  # 조달청_나라장터 사전규격정보서비스
+  # 문서 기준 서비스 URL
+  api_base_url: "http://apis.data.go.kr/1230000/ao/HrcspSsstndrdInfoService"
+
+  # 실제 인증키는 .env 또는 GitHub Secrets의 G2B_PRESPEC_SERVICE_KEY 사용
+  # 기존 G2B_SERVICE_KEY도 함께 지원합니다.
+  service_key: ""
+
+  # 품명/사업명에 포함되면 가져올 키워드입니다.
+  # *교육*처럼 쓰지 않고 "교육"이라고만 넣으면 포함 검색됩니다.
+  keywords:
+    - "대학교"
+    - "AI"
+    - "LMS"
+    - "교육관리시스템"
+    - "교육시스템"
+    - "학사관리시스템"
+    - "온라인교육"
+    - "이러닝"
+
+  # 등록일시 기준 최근 N일 조회
+  lookback_days: 30
+
+  # 업무구분별 최대 조회 페이지 수
+  max_pages: 10
+
+  # 의견등록마감일시가 지난 사전규격은 제외합니다.
+  # 마감일시를 판단할 수 없는 항목은 포함합니다.
+  active_only: true
+
+  # API 응답 앞부분 확인이 필요할 때만 true
+  debug_response: false
+
+  params:
+    numOfRows: 100
+    type: "json"
+    inqryDiv: "1"
+
+  # 기본은 용역/물품/공사를 조회합니다.
+  # 특정 오퍼레이션에서 403이 발생해도 전체 프로그램은 중단하지 않고 다음 업무구분으로 넘어갑니다.
+  work_types:
+    - name: "용역"
+      operation: "getPublicPrcureThngInfoServc"
+      enabled: true
+    - name: "물품"
+      operation: "getPublicPrcureThngInfoThng"
+      enabled: true
+    - name: "공사"
+      operation: "getPublicPrcureThngInfoCnstwk"
+      enabled: true
+    - name: "외자"
+      operation: "getPublicPrcureThngInfoFrgcpt"
+      enabled: false
+
+  include_keywords: []
+  exclude_keywords: []
+
+state:
+  seen_file: "seen_prespec_ids.json"
+  latest_file: "latest_prespecs.json"
