@@ -13,24 +13,44 @@ g2b_prespec:
     - "대학교"
     - "AI"
     - "LMS"
+    - "HRD"
+    - "CDP"
+    - "인공지능"
     - "교육관리시스템"
     - "교육시스템"
     - "학사관리시스템"
+    - "사이버교육"
     - "온라인교육"
+    - "원격교육"
+    - "학사관리"
+    - "학습관리"
+    - "교육운영"
+    - "교육포털"
+    - "교육관리"
+    - "학습포털"
+    - "교육플랫폼"
+    - "온라인플랫폼"
     - "이러닝"
+    - "정보시스템"
+    - "아카데미"
+  
 
   # 등록일시 기준 최근 N일 조회
   lookback_days: 30
 
   # 업무구분별 최대 조회 페이지 수
-  max_pages: 10
+  max_pages: 50
 
   # 의견등록마감일시가 지난 사전규격은 제외합니다.
   # 마감일시를 판단할 수 없는 항목은 포함합니다.
   active_only: true
 
+  
+
   # API 응답 앞부분 확인이 필요할 때만 true
   debug_response: false
+
+  
 
   params:
     numOfRows: 100
@@ -45,10 +65,10 @@ g2b_prespec:
       enabled: true
     - name: "물품"
       operation: "getPublicPrcureThngInfoThng"
-      enabled: true
+      enabled: false
     - name: "공사"
       operation: "getPublicPrcureThngInfoCnstwk"
-      enabled: true
+      enabled: false
     - name: "외자"
       operation: "getPublicPrcureThngInfoFrgcpt"
       enabled: false
